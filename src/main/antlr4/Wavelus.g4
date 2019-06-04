@@ -1,4 +1,4 @@
-grammar WavelusLexer;
+grammar Wavelus;
 
 program: block;
 
@@ -63,9 +63,8 @@ NULL: N U L L ;
 TRUE: T R U E;
 FALSE: F A L S E;
 NUMBER_VALUE: [-]?[0-9]+;
-//TEXT_VALUE: [a-zA-Z0-9 \t\n]*;
-//T_COMMENT: '#'[a-zA-Z_ąćęłńóśźż0-9 \t\n;]*'#' -> skip;
-//COMMENT_LINE : '##' ~[\r\n]* -> skip;
+TEXT_VALUE: '\''[a-zA-Z0-9 \t\n]*'\'';
+COMMENT_LINE : '##' ~[\r\n]* -> skip;
 WHITESPACE: [ \t\n] -> skip;
 IDENTIFIER: LOWERCASE (LOWERCASE | DIGIT | '_')*;
 
@@ -103,13 +102,13 @@ expressionList: expression (',' expression)*;
 expression
     : booleanExpression
     | numberExpression
-//    | textExpression
+    | textExpression
     | IDENTIFIER
     ;
 
-//textExpression
-//    : TEXT_VALUE
-//    ;
+textExpression
+    : TEXT_VALUE
+    ;
 
 numberExpression
     : MINUS numberExpression
@@ -125,7 +124,7 @@ booleanExpression
     | NULL
     | booleanExpression NAND booleanExpression
     | numberExpression EQUAL numberExpression
-//    | textExpression EQUAL textExpression
+    | textExpression EQUAL textExpression
     | numberExpression GREATER numberExpression
     ;
 

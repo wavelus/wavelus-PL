@@ -3,6 +3,8 @@ a=56;
 print ();
 print (54);
 print (true !! false);
+print ( 'asd' );
+print ( 'asd' == 'dfs' );
 print (null);
 print (a);
 print (nothing(a));

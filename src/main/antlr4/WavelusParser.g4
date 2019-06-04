@@ -1,3 +1,0 @@
-grammar Wavelus;
-
-program: block;
