@@ -2,10 +2,25 @@ a=56;
 
 print ();
 print (54);
-print (44 !! 55);
+print (true !! false);
 print (null);
 print (a);
 print (nothing(a));
+
+if( a>4 )
+do
+a=5;
+phone=null;
+end
+
+
+while a>4
+do
+
+a=5;
+phone=null;
+
+end
 
 fun nothing( )
 a=56;

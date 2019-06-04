@@ -1,4 +1,4 @@
-grammar Wavelus;
+grammar WavelusLexer;
 
 program: block;
 
@@ -41,8 +41,6 @@ DEF_FUN: F U N;
 WHILE: W H I L E;
 RUN: R U N;
 END: E N D;
-TRUE: T R U E;
-FALSE: F A L S E;
 RETURN: 'return';
 PRINT: 'print';
 PLUS: '+';
@@ -60,8 +58,10 @@ CLOSE_SQUARED_PAREN: ']';
 TYPE: BOOL|TEXT|NUMBER;
 NUMBER: N U M B E R;
 TEXT: T E X T;
-BOOL: TRUE | FALSE;
-NULL: N U L L;
+BOOL: TRUE | FALSE ;
+NULL: N U L L ;
+TRUE: T R U E;
+FALSE: F A L S E;
 NUMBER_VALUE: [-]?[0-9]+;
 //TEXT_VALUE: [a-zA-Z0-9 \t\n]*;
 //T_COMMENT: '#'[a-zA-Z_ąćęłńóśźż0-9 \t\n;]*'#' -> skip;
@@ -86,7 +86,7 @@ functionCall
 
 ifStatement: ifStat elseIfStat* elseStat? END;
 
-ifStat: IF expression DO block;
+ifStat: IF OPEN_PAREN booleanExpression CLOSE_PAREN DO block;
 
 elseIfStat: ELSE IF expression DO block;
 
@@ -101,14 +101,15 @@ idList: IDENTIFIER (',' IDENTIFIER)*;
 expressionList: expression (',' expression)*;
 
 expression
-    : numberExpression
-    | booleanExpression
-    | textExpression
+    : booleanExpression
+    | numberExpression
+//    | textExpression
     | IDENTIFIER
     ;
 
-textExpression
-    : TEXT_VALUE;
+//textExpression
+//    : TEXT_VALUE
+//    ;
 
 numberExpression
     : MINUS numberExpression
@@ -116,14 +117,16 @@ numberExpression
     | functionCall
     | listElement
     | OPEN_PAREN numberExpression CLOSE_PAREN
+    | IDENTIFIER
     ;
 
 booleanExpression
     : BOOL
     | NULL
     | booleanExpression NAND booleanExpression
-    | booleanExpression EQUAL booleanExpression
-    | booleanExpression GREATER booleanExpression
+    | numberExpression EQUAL numberExpression
+//    | textExpression EQUAL textExpression
+    | numberExpression GREATER numberExpression
     ;
 
 listElement:
