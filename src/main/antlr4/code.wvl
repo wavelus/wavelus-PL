@@ -1,0 +1,13 @@
+a=56;
+
+print ();
+print (54);
+print (44 !! 55);
+print (null);
+print (a);
+print (nothing(a));
+
+fun nothing( )
+a=56;
+return null;
+end;
