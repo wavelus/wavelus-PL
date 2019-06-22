@@ -30,7 +30,7 @@ ifStatement: ifStat elseIfStat* elseStat? END;
 
 ifStat: IF OPEN_PAREN booleanExpression CLOSE_PAREN DO block;
 
-elseIfStat: ELSE IF OPEN_PAREN booleanExpression CLOSE_PAREN DO block;
+elseIfStat: ELIF OPEN_PAREN booleanExpression CLOSE_PAREN DO block;
 
 elseStat: ELSE DO block;
 

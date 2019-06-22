@@ -35,6 +35,7 @@ fragment Z: ('z' | 'Z');
 IF: I F;
 DO: D O;
 ELSE: E L S E;
+ELIF: E L I F;
 DEF_FUN: F U N;
 WHILE: W H I L E;
 RUN: R U N;

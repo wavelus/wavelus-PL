@@ -10,17 +10,15 @@ public class WavelusLang {
 
     public static void main(String[] args) {
         ANTLRInputStream inputStream = new ANTLRInputStream(
-                        "run " +
-                        "print ();\n" +
-                        "print (54);\n" +
-                        " number liczba; \n" +
-                        "print (true !! false);\n" +
-                        "print ( 'asd' ); \n"  +
-                        "while  a > 4  \n" +
-                        "do\n" +
-                        "a=5;\n" +
-                        "phone=null;\n" +
-                        "end "
+
+            "run\n" +
+                    "number a;\n" +
+                    "a = 12;\n" +
+                    "while a > 4\n" +
+                    "do\n" +
+                    "a=1;\n" +
+                    "end"
+
         );
         WavelusLexer wavelusLexer = new WavelusLexer(inputStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(wavelusLexer);
