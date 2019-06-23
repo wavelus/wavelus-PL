@@ -1,0 +1,7 @@
+run
+text name;
+name ='Adam';
+number age;
+age = 19;
+print(name);
+print(age);
